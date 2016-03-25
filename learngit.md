@@ -131,10 +131,32 @@ nothing to commit (working directory clean)：工作区是空的
     $ rm test.txt
 
 ##远程
-获得key
+
+
+- 获得key
  ` ssh-keygen -t rsa -C "email"`
-自选保存key地址(写到.ssh)
+
+
+- 自选保存key地址(写到.ssh)
  ` /c/Users/lenovo/learngit/key/.ssh`
+
+- 关联本地和远程
+	`git remote add origin git@github.com:michaelliao/learngit.git`
+
+- 第一次推送：
+    git push -u origin master
+
+
+- 本地每次提交后，推送最新版本
+
+    git push origin master
+##从远处克隆
+	`git clone git@github.com:michaelliao/gitskills.git`
+	`https://github.com/michaelliao/gitskills.git`//http
+
+##分支管理
+
+master才是指向提交的，所以，HEAD指向的就是当前分支
 
 #注意：
 *
