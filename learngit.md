@@ -132,34 +132,100 @@ nothing to commit (working directory clean)：工作区是空的
 
 ##远程
 
+###1
 
-- 获得key
+
+1.  获得key
  ` ssh-keygen -t rsa -C "email"`
-
-
 - 自选保存key地址(写到.ssh)
  ` /c/Users/lenovo/learngit/key/.ssh`
+- “Add SSH Key”，在Key文本框里粘贴id_rsa.pub文件的内容
+- 创建远程仓库Create repository，填上仓库名字
 
-- 关联本地和远程
-	`git remote add origin git@github.com:michaelliao/learngit.git`
+###2
+1. 关联本地
+    git remote add origin git@gitlab.com:linglim/learn-git.git
 
-- 第一次推送：
-    git push -u origin master
+>若提示出错信息：fatal: remote origin already exists.
+
+>    解决办法如下：
+
+>    1、先输入$ git remote rm origin
+
+>    2、再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！
 
 
-- 本地每次提交后，推送最新版本
 
-    git push origin master
-##从远处克隆
-	`git clone git@github.com:michaelliao/gitskills.git`
-	`https://github.com/michaelliao/gitskills.git`//http
+##分支
 
-##分支管理
+>创建与合并分支
 
-master才是指向提交的，所以，HEAD指向的就是当前分支
+
+   
+>小结
+Git鼓励大量使用分支：
+
+> 查看分支：git branch
+> 
+> 创建分支：git branch <name>
+> 
+> 切换分支：git checkout <name>
+> 
+> 创建+切换分支：git checkout -b <name>
+> 
+> 合并某分支到当前分支：git merge <name>
+> 
+> 删除分支：git branch -d <name>
+> 查看分支合并图：git log --graph
+
+##合并
+
+
+- >git merge <name>
+>Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
+
+
+
+
+
+- >git merge --no-ff -m "merge with no-ff" dev
+
+>强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+
+
+
 
 #注意：
 *
 ##每次更改，都要add，然后commit
 *
 死机时：ctrl+c
+
+#命令
+![](https://camo.githubusercontent.com/e12dfd770f44b37c8a81e0339d3ef6d1aee035dc/687474703a2f2f7777312e73696e61696d672e636e2f6d773639302f3434383934636262677731657569676339397a38776a323065343062706a736d2e6a7067)
+
+Command line instructions
+
+
+Git global setup
+
+git config --global user.name "linglim"
+git config --global user.email "359128244@qq.com"
+
+Create a new repository
+
+git clone git@gitlab.com:linglim/shiyanshi.git
+cd shiyanshi
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder or Git repository
+
+cd existing_folder
+git init
+git remote add origin git@gitlab.com:linglim/shiyanshi.git
+git add .
+git commit
+git push -u origin master
