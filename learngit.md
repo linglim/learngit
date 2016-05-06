@@ -244,3 +244,8 @@ git push -u origin master
 --b选项可以创建分支并切换
 
     $ git checkout -b <branch>
+--合并分支
+--先切回到master，然后合并issue1
+    $ git checkout master
+    $ git merge issue1
+--删除
