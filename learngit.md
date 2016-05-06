@@ -228,7 +228,8 @@ git init
 git remote add origin git@gitlab.com:linglim/shiyanshi.git
 git add .
 git commit
-git push -u origin master
+
+
 
 
 ##猴子都能懂得git
@@ -254,4 +255,5 @@ git push -u origin master
     $ git branch issue2
     $ git branch issue3
     $ git checkout issue2
+
 
