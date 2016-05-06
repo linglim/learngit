@@ -229,3 +229,18 @@ git remote add origin git@gitlab.com:linglim/shiyanshi.git
 git add .
 git commit
 git push -u origin master
+
+
+##猴子都能懂得git
+-创建分支
+
+    $ git branch issue1
+-切换到分支issue1
+
+    $ git checkout issue1
+-查看分支
+
+    $ git branch
+--b选项可以创建分支并切换
+
+    $ git checkout -b <branch>
