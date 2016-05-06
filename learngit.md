@@ -249,3 +249,9 @@ git push -u origin master
     $ git checkout master
     $ git merge issue1
 --删除
+    $ git branch -d issue1
+--并行
+    $ git branch issue2
+    $ git branch issue3
+    $ git checkout issue2
+
