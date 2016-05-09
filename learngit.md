@@ -228,7 +228,12 @@ git init
 git remote add origin git@gitlab.com:linglim/shiyanshi.git
 git add .
 git commit
+<<<<<<< HEAD
 git push -u origin master
+=======
+
+
+
 
 
 ##猴子都能懂得git
@@ -244,3 +249,22 @@ git push -u origin master
 --b选项可以创建分支并切换
 
     $ git checkout -b <branch>
+
+-合并分支
+
+--先切回到master，然后合并issue1
+
+    $ git checkout master
+    $ git merge issue1
+
+--删除
+
+    $ git branch -d issue1
+
+--并行
+
+    $ git branch issue2
+    $ git branch issue3
+    $ git checkout issue2
+
+
