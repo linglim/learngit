@@ -1,3 +1,5 @@
+#学习地址
+> [http://blog.just4fun.site/open-edx-dev-skill-and-resource.html](http://blog.just4fun.site/open-edx-dev-skill-and-resource.html "学习git网址")
 #learn git
 ##安装与配置
    ` git config --global user.name "name"`
