@@ -96,8 +96,12 @@ HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历�
 
 
 ----------
+文件：已跟踪、未跟踪、变化的，暂存的
 
-
+把跟踪的文件放入暂存区，add 命令
+		
+    Changes not staged for commit：（跟踪文件内容发生了变化，但还没放入暂存区）
+	change to be committed:(文件被修改了，并放入暂存的)
 
 On branch master(在分支的)
 >
@@ -108,16 +112,18 @@ Untracked files:（在learngit的目录下，但还没被add文件）
 
 nothing to commit (working directory clean)：工作区是空的
 
+
+
 ##查看更修改内容（在还没commit之前，告诉你修改的内容）
 
-    $ git diff readme.txt
-
-
-##查看命令日志，有几个历史版本
-
-    $ git log
-    
-    $ git log --pretty=oneline//显示好看
+    $ git diff readme.txt：（/查看尚未暂存的文件有哪些修改更新，用来看暂存前后的变化）
+    $git diff --cached/staged:(暂存文件的改变)
+##查看状态
+	$git status
+	M :被修改、暂存
+	 M:被修改
+	 A:新入暂存的
+	？？：未跟踪的文件
 
 ##回退历史版本
 
@@ -127,8 +133,21 @@ nothing to commit (working directory clean)：工作区是空的
 
 只要记住git log下 历史版本的commit id前几位就可回到任意时间（穿越过去-未来）
 
+##移除文件
+    
+    $git rm (文件已修改，但未入暂存)
+    $git rm -f(文件已经在暂存区里)
+    $git rm --cached <> (从git仓库删除，但要保留到本地硬盘)
+##移动文件（重命名）
+    $git mv <> <new>
 ##删除
     $ rm test.txt
+
+##查看命令日志，有几个历史版本（查看提交历史纪录）
+
+    $ git log
+    
+    $ git log --pretty=oneline//显示好看
 
 ##远程
 
@@ -166,7 +185,8 @@ nothing to commit (working directory clean)：工作区是空的
 Git鼓励大量使用分支：
 
 > 查看分支：git branch
-> 
+> 查看每个分支最后一次提交：git branch -v
+> 查看已经合并到当前的：git branch --merged
 > 创建分支：git branch <name>
 > 
 > 切换分支：git checkout <name>
@@ -175,8 +195,29 @@ Git鼓励大量使用分支：
 > 
 > 合并某分支到当前分支：git merge <name>
 > 
-> 删除分支：git branch -d <name>
+> 删除分支：git branch -d <name分支名>
 > 查看分支合并图：git log --graph
+
+##远程分支
+> 没添加远程分支时master就是本地分支
+> 
+>添加远程仓库时：
+>分支种类：远程master、本地master（跟踪分支）、origin/master(远程跟踪分支：不能移动的本地分支)
+>
+>git clone <url><本地仓库名：不写默认为origin>，此时分支有两个：本地master、origin/master，你在master工作，当有人推送到远端后，你再推送，先git fetch origin,然后推送：git push (remote)(branch)/git push origin(branch本地)（branch远端）
+>
+>git merge orgin/branch: 合并到当前分支
+
+>git checkout _b branchname:新建并切到自己的分支，工作起点是origin/branch
+>
+>
+>git fetch origin:本地不会组成一个可编辑的副本，从服务器抓取数据，并不修改工作目录内容
+>
+>git pull:=git fetch+git merge ：修改合并入本地分支，生成本地可修改的副本
+##查看远端的分支
+    git ls -remote//查看远端目录列表
+    git remote show(remote)//查看更多远端信息
+
 
 ##合并
 
@@ -204,33 +245,33 @@ Git鼓励大量使用分支：
 #命令
 ![](https://camo.githubusercontent.com/e12dfd770f44b37c8a81e0339d3ef6d1aee035dc/687474703a2f2f7777312e73696e61696d672e636e2f6d773639302f3434383934636262677731657569676339397a38776a323065343062706a736d2e6a7067)
 
-Command line instructions
+#Command line instructions
 
+    
+    Git global setup
+    
+    git config --global user.name "linglim"
+    git config --global user.email "359128244@qq.com"
+    
+    Create a new repository
+    
+    git clone git@gitlab.com:linglim/shiyanshi.git
+    cd shiyanshi
+    touch README.md
+    git add README.md
+    git commit -m "add README"
+    git push -u origin master
+    
+    Existing folder or Git repository
+    
+    cd existing_folder
+    git init
+    git remote add origin git@gitlab.com:linglim/shiyanshi.git
+    git add .
+    git commit
+    
+    git push -u origin master
 
-Git global setup
-
-git config --global user.name "linglim"
-git config --global user.email "359128244@qq.com"
-
-Create a new repository
-
-git clone git@gitlab.com:linglim/shiyanshi.git
-cd shiyanshi
-touch README.md
-git add README.md
-git commit -m "add README"
-git push -u origin master
-
-Existing folder or Git repository
-
-cd existing_folder
-git init
-git remote add origin git@gitlab.com:linglim/shiyanshi.git
-git add .
-git commit
-<<<<<<< HEAD
-git push -u origin master
-=======
 
 
 
